@@ -1,23 +1,28 @@
 public class Board {
     private int size;
     private int[][] board;
-    
+    private int[] ships;
     /**
      * Make board of size: size
+     * Make a list of ships of size: size
      * @param size
      */
     public Board(int size) {
         this.size = size;
-        board = new int[size][size];
+        board = int[size][size];
+        ships = int[size];
+        for (int i = 0; i < size; i++) {
+            ships[i] = new ship(i+2);
+        }
     }
 
-    /** 
+    /**
      *  <li>1. Replaces all occurences of a 0 with an "*" aka blank or unknown.</li>
      *  <li>2. Replaces all occurences of a -1 with a "O" aka miss.</li>
      *  <li>3. Replaces all occurences of a 1 with a "X" aka hit.</li>
      *  <li>4. Doesn't replace any number x >= 2 aka type of ship.</li>
      *  @return Returns a string representation of the board with axies.
-    */     
+    */
     public String toString() {
         String str2DArray = "";
         String strArray = "";
@@ -25,7 +30,7 @@ public class Board {
         // X axis with letters
         strArray = "    ";
         for (int i = 0; i < size; i++) {
-            strArray += (char)(i + 65);
+            strArray += (char)(65 + i);
             if (i != size - 1) {
                 strArray += "  ";
             }
@@ -52,10 +57,10 @@ public class Board {
         for (int i = 0; i < size; i++) {
             strArray = (i + 1) + " | ";
             for (int j = 0; j < size; j++) {
-                // Replaces int values with battle ship equivlents. See java doc of toString for conversions  
+                // Replaces int values with battle ship equivlents. See java doc of toString for conversions
                 if (board[i][j] == 0) {
                     strArray += "*";
-                } 
+                }
                 else if (board[i][j] == -1) {
                     strArray += "O";
                 }
@@ -77,9 +82,9 @@ public class Board {
         return str2DArray;
     }
 
-    /** 
-     * @return size of board 
-    */ 
+    /**
+     * @return size of board
+    */
     public int size() {
         return size;
     }
@@ -91,8 +96,8 @@ public class Board {
      */
     public int get(int i, int j) {
         return board[i][j];
-    } 
-    
+    }
+
     /**
      * Sets the item at row i, collumn j of board to value.
      * @param i
