@@ -10,16 +10,6 @@ public class Point {
     String[] strPointSplit = strPoint.split(",");
     float x = float(strPointSplit[0]);
     float y = float(strPointSplit[1]);
-    this(x, y);
-  }
-
-  public static ArrayList<Point> parsePathFromFile() {
-    ArrayList<Point> path = new ArrayList<Point>(); 
-    String[] file = loadStrings("level"+level+".txt");
-    for (String strPoint : file) {
-      Point point = new Point(strPoint);
-      path.add(point);
-    }
-    return path;
+    //this(x, y);
   }
 }
