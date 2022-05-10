@@ -30,11 +30,11 @@ public class Shooter {
       if (angle < 0) angle = TWO_PI + angle;
 
       // ease rotation
-      targetAngle += (angle - targetAngle) * easing;
-      pushMatrix();
-      translate(x, y);
+      targetAngle += (angle - targetAngle); //* easing;
+
+      translate(width/2, height/2);
       rotate(targetAngle);
-      shape(shooter, x, y);
-      popMatrix();
+      shape(shooter, 0, 0);
+
     }
   }
